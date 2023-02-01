@@ -13,7 +13,7 @@ import lombok.Data;
 public class PersonalProfile {
 
     @Id
-    @Column(name = "id_pet")
+    @Column(name = "id_pet", nullable = false)
     private int id;
 
     @Column(name = "friendly_to_kids", nullable = false)
