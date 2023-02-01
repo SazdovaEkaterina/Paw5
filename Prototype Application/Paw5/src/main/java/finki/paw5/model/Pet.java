@@ -16,7 +16,7 @@ import lombok.Data;
 public class Pet {
 
     @Id
-    @Column(name = "id_pet", nullable = false)
+    @Column(name = "id_pet")
     private int id;
 
     @Column(name = "url_pet_image", length = 200)
