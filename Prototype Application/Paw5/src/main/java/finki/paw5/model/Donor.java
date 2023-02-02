@@ -18,7 +18,7 @@ public class Donor {
     @Column(name = "is_from_organisation", nullable = false)
     private boolean fromOrganisation;
 
-    @Column(name = "name_organisation", nullable = true, length = 100)
+    @Column(name = "name_organisation_donor", nullable = true, length = 100)
     private String organisationName;
 
     public Donor(int id, boolean fromOrganisation, String organisationName) {

@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -18,10 +19,10 @@ public class Adoption {
     private int id;
 
     @Column(name = "start_date", nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date_foster")
-    private Date endDateFoster;
+    private LocalDate endDateFoster;
 
     @Column(name = "approved", nullable = false)
     private boolean approved;
@@ -29,7 +30,7 @@ public class Adoption {
     @Column(name = "id_adopter", nullable = false)
     private int adopterId;
 
-    public Adoption(Date startDate, Date endDateFoster, boolean approved, int adopterId) {
+    public Adoption(LocalDate startDate, LocalDate endDateFoster, boolean approved, int adopterId) {
         this.startDate = startDate;
         this.endDateFoster = endDateFoster;
         this.approved = approved;
