@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -21,12 +22,12 @@ public class Therapy {
     private String healthProblem;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
-    public Therapy(String healthProblem, Date startDate, Date endDate) {
+    public Therapy(String healthProblem, LocalDate startDate, LocalDate endDate) {
         this.healthProblem = healthProblem;
         this.startDate = startDate;
         this.endDate = endDate;

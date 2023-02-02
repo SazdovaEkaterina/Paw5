@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -22,12 +23,12 @@ public class PetNeedsInterventionInVetClinic {
     private int vetClinicId;
 
     @Column(name = "date_of_interventing", nullable = false)
-    private Date interventionDate;
+    private LocalDate interventionDate;
 
     @Column(name = "description", length = 100)
     private String description;
 
-    public PetNeedsInterventionInVetClinic(int petId, int vetClinicId, Date interventionDate, String description) {
+    public PetNeedsInterventionInVetClinic(int petId, int vetClinicId, LocalDate interventionDate, String description) {
         this.petId = petId;
         this.vetClinicId = vetClinicId;
         this.interventionDate = interventionDate;

@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -18,7 +19,7 @@ public class Post {
     private int id;
 
     @Column(name="date_post", nullable = false)
-    private Date dateCreated;
+    private LocalDate dateCreated;
 
     @Column(name="url_thumbanail", length = 200)
     private String thumbnailUrl;
@@ -32,7 +33,7 @@ public class Post {
     @Column(name="id_employee")
     private int employeeId;
 
-    public Post(Date dateCreated, String thumbnailUrl, int petId, int surendeeId, int employeeId) {
+    public Post(LocalDate dateCreated, String thumbnailUrl, int petId, int surendeeId, int employeeId) {
         this.dateCreated = dateCreated;
         this.thumbnailUrl = thumbnailUrl;
         this.petId = petId;
