@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a post</title>
+</head>
+<body>
+    <h1>Create post</h1>
+<form method="post" action="/CreatePost">
+
+    <div id="SelectPet">
+        <label for="pet">Selet pet:</label>
+        <select id="pet">
+        </select>
+    </div>
+
+    <div id="AddNewPet">
+        <label for="newpet">Add new pet:</label>
+            <input id="newpet" type="checkbox">
+    </div>
+
+    <div id="PetName">
+        Name:<input type="text">
+    </div>
+
+    <div id="Genders">
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option>male</option>
+            <option>female</option>
+        </select>
+    </div>
+
+    <div id="AgeGroup">
+        <label for="age">Age Group:</label>
+        <select id="age">
+            <option>young</option>
+            <option>adult</option>
+            <option>elder</option>
+        </select>
+    </div>
+
+    <div id="Sizes">
+        <label for="size">Size:</label>
+        <select id="size">
+            <option>extra small</option>
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+            <option>extra large</option>
+        </select>
+    </div>
+
+    <div id="Species">
+        <label for="specie">Species:</label>
+        <select id="specie">
+            <option>cat</option>
+            <option>dog</option>
+            <option>bird</option>
+        </select>
+    </div>
+
+    <div id="Breed">
+        Breed:<input type="text">
+    </div>
+
+    <div id="UploadImage">
+        URL of Image:<input type="text">
+       <!-- <label for="upload">Image:</label>
+        <input id="upload" type="file" accept="image/*">
+        <input type="submit">-->
+    </div>
+    <input id="SubmitPost" type="submit">
+</form>
+</body>
+</html>
