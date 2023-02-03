@@ -1,22 +1,18 @@
 package finki.paw5.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "admin_table")
-public class Admin {
+@PrimaryKeyJoinColumn(name = "id_user")
+public class Admin extends User {
 
-    @Id
-    @Column(name = "id_user", nullable = false)
-    private int id;
-
-    public Admin(int id) {
-        this.id = id;
+    public Admin(LocalDate dateCreated, String name, String email, String password, String telephone) {
+        super(dateCreated, name, email, password, telephone);
     }
 
     public Admin() {

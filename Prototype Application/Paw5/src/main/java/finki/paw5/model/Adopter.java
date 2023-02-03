@@ -4,20 +4,16 @@ import finki.paw5.model.enumerations.FreeTime;
 import finki.paw5.model.enumerations.Funds;
 import finki.paw5.model.enumerations.Housing;
 import finki.paw5.model.enumerations.PhysicalActivity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "adopter")
-public class Adopter {
-
-    @Id
-    @Column(name = "id_user", nullable = false)
-    private int id;
+@PrimaryKeyJoinColumn(name = "id_user")
+public class Adopter extends User {
 
     @Column(name = "free_time")
     private FreeTime freeTime;
@@ -46,8 +42,23 @@ public class Adopter {
     @Column(name = "verified_by_employee")
     private int verifiedByEmployeeId;
 
-    public Adopter(int id, FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing, PhysicalActivity physicalActivity, boolean willFoster, boolean verified, int verifiedByEmployeeId) {
-        this.id = id;
+    public Adopter(LocalDate dateCreated, String name, String email, String password, String telephone,
+                   FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
+                   PhysicalActivity physicalActivity, boolean willFoster, boolean verified, int verifiedByEmployeeId) {
+        super(dateCreated, name, email, password, telephone);
+        this.freeTime = freeTime;
+        this.funds = funds;
+        this.hasOtherPets = hasOtherPets;
+        this.hasKids = hasKids;
+        this.housing = housing;
+        this.physicalActivity = physicalActivity;
+        this.willFoster = willFoster;
+        this.verified = verified;
+        this.verifiedByEmployeeId = verifiedByEmployeeId;
+    }
+
+    public Adopter(FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
+                   PhysicalActivity physicalActivity, boolean willFoster, boolean verified, int verifiedByEmployeeId) {
         this.freeTime = freeTime;
         this.funds = funds;
         this.hasOtherPets = hasOtherPets;
