@@ -1,19 +1,15 @@
 package finki.paw5.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "employee")
-public class Employee {
-
-    @Id
-    @Column(name = "id_user", nullable = false)
-    private int id;
+@PrimaryKeyJoinColumn(name = "id_user")
+public class Employee extends User {
 
     @Column(name = "position_employee", nullable = false, length = 20)
     private String position;
@@ -27,16 +23,24 @@ public class Employee {
     @Column(name = "verified_by_admin")
     private int verifiedByAdminId;
 
-    public Employee() {
-
-    }
-
-    public Employee(int id, String position, int shelterId, boolean verified, int verifiedByAdminId) {
-        this.id = id;
+    public Employee(LocalDate dateCreated, String name, String email, String password, String telephone,
+                    String position, int shelterId, boolean verified, int verifiedByAdminId) {
+        super(dateCreated, name, email, password, telephone);
         this.position = position;
         this.shelterId = shelterId;
         this.verified = verified;
         this.verifiedByAdminId = verifiedByAdminId;
+    }
+
+    public Employee(String position, int shelterId, boolean verified, int verifiedByAdminId) {
+        this.position = position;
+        this.shelterId = shelterId;
+        this.verified = verified;
+        this.verifiedByAdminId = verifiedByAdminId;
+    }
+
+    public Employee() {
+
     }
 
 }

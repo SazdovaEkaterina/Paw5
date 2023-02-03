@@ -1,24 +1,21 @@
 package finki.paw5.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "surendee")
-public class Surendee {
+@PrimaryKeyJoinColumn(name = "id_user")
+public class Surendee extends User {
 
-    @Id
-    @Column(name = "id_user", nullable = false)
-    private int id;
-
-    public Surendee(int id) {
-        this.id = id;
+    public Surendee(LocalDate dateCreated, String name, String email, String password, String telephone) {
+        super(dateCreated, name, email, password, telephone);
     }
 
     public Surendee() {
     }
+
 }
