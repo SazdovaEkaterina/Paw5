@@ -1,14 +1,12 @@
 package finki.paw5.model.relations;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "pet_belongs_to_category")
+@IdClass(PetBelongsToCategoryId.class)
 public class PetBelongsToCategory {
 
     @Id
