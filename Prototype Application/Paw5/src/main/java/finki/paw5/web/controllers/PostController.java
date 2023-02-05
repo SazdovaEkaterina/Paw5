@@ -21,16 +21,16 @@ public class PostController {
     }
 
     @PostMapping
-    public String submit (@RequestParam String name,
-                          @RequestParam Gender gender,
-                          @RequestParam AgeGroup ageGroup,
-                          @RequestParam Size size,
-                          @RequestParam Species species,
-                          @RequestParam String breed,
-                          @RequestParam String urlimage) {
+    public String submit(@RequestParam String name,
+                         @RequestParam Gender gender,
+                         @RequestParam AgeGroup ageGroup,
+                         @RequestParam Size size,
+                         @RequestParam Species species,
+                         @RequestParam String breed,
+                         @RequestParam String urlimage) {
 
-            this.postService.submit(name, gender, ageGroup, size, species, breed, urlimage);
+        this.postService.submit(name, gender, ageGroup, size, species, breed, urlimage);
 
-            return null;
+        return null;
     }
 }
