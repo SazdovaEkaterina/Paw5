@@ -1,10 +1,7 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import finki.paw5.model.enumerations.FoodType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -13,8 +10,9 @@ import lombok.Data;
 public class Food {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_food")
-    private int id;
+    private Integer id;
 
     @Column(name = "manufacturer", nullable = false, length = 100)
     private String manufacturer;

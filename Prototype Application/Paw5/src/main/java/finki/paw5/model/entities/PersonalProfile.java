@@ -1,4 +1,4 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import finki.paw5.model.enumerations.*;
 import jakarta.persistence.Column;
@@ -14,7 +14,7 @@ public class PersonalProfile {
 
     @Id
     @Column(name = "id_pet", nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "friendly_to_kids", nullable = false)
     private FriendlyToKids friendlyToKids;

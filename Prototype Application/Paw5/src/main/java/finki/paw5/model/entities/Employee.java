@@ -1,4 +1,4 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import finki.paw5.model.enumerations.FreeTime;
 import finki.paw5.model.enumerations.Funds;

@@ -1,9 +1,6 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,8 +12,9 @@ import java.util.Date;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_post")
-    private int id;
+    private Integer id;
 
     @Column(name="date_post", nullable = false)
     private LocalDate dateCreated;

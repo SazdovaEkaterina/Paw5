@@ -1,9 +1,6 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -12,8 +9,9 @@ import lombok.Data;
 public class Organisation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_organisation")
-    private int id;
+    private Integer id;
 
     @Column(name = "name_organisation", nullable = false, length = 100)
     private String name;
