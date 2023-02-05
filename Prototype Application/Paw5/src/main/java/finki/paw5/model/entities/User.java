@@ -1,4 +1,4 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,8 +13,9 @@ import java.util.Date;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    protected int id;
+    protected Integer id;
 
     @Column(name = "date_created_user", nullable = false)
     protected LocalDate dateCreated;

@@ -1,23 +1,21 @@
 package finki.paw5.model.relations;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "pet_needs_therapy")
+@IdClass(PetNeedsTherapyId.class)
 public class PetNeedsTherapy {
 
     @Id
     @Column(name="id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Id
     @Column(name="id_therapy", nullable = false)
-    private int therapyId;
+    private Integer therapyId;
 
     public PetNeedsTherapy(int petId, int therapyId) {
         this.petId = petId;

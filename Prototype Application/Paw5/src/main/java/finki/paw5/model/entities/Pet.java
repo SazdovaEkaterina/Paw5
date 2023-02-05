@@ -1,13 +1,10 @@
-package finki.paw5.model;
+package finki.paw5.model.entities;
 
 import finki.paw5.model.enumerations.AgeGroup;
 import finki.paw5.model.enumerations.Gender;
 import finki.paw5.model.enumerations.Size;
 import finki.paw5.model.enumerations.Species;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -16,8 +13,9 @@ import lombok.Data;
 public class Pet {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pet")
-    private int id;
+    private Integer id;
 
     @Column(name = "url_pet_image", length = 200)
     private String imageUrl;

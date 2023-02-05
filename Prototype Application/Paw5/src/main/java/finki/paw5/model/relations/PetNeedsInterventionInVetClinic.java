@@ -1,9 +1,6 @@
 package finki.paw5.model.relations;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -12,15 +9,16 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "pet_needs_intervention_in_vet_clinic")
+@IdClass(PetNeedsInterventionInVetClinicId.class)
 public class PetNeedsInterventionInVetClinic {
 
     @Id
     @Column(name = "id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Id
     @Column(name = "id_vet_clinic", nullable = false)
-    private int vetClinicId;
+    private Integer vetClinicId;
 
     @Column(name = "date_of_interventing", nullable = false)
     private LocalDate interventionDate;
