@@ -10,11 +10,11 @@ import finki.paw5.service.PostService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostServiceImpl implements PostService {
+public class PostServiceImplementation implements PostService {
 
     private final PostRepository postRepository;
 
-    public PostServiceImpl(PostRepository PostRepository){
+    public PostServiceImplementation(PostRepository PostRepository){
         this.postRepository = PostRepository;
     }
 
