@@ -15,7 +15,7 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pet")
-    private int id;
+    private Integer id;
 
     @Column(name = "url_pet_image", length = 200)
     private String imageUrl;

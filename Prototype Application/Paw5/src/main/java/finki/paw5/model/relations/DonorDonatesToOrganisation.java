@@ -11,11 +11,11 @@ public class DonorDonatesToOrganisation {
 
     @Id
     @Column(name="id_user", nullable = false)
-    private int userId;
+    private Integer userId;
 
     @Id
     @Column(name="id_organisation", nullable = false)
-    private int organisationId;
+    private Integer organisationId;
 
     public DonorDonatesToOrganisation(int userId, int organisationId) {
         this.userId = userId;

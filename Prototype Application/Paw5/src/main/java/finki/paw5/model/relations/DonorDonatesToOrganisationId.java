@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class DonorDonatesToOrganisationId implements Serializable {
 
-    int userId;
-    int organisationId;
+    Integer userId;
+    Integer organisationId;
 
 }

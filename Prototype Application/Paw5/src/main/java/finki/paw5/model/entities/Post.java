@@ -14,7 +14,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_post")
-    private int id;
+    private Integer id;
 
     @Column(name="date_post", nullable = false)
     private LocalDate dateCreated;

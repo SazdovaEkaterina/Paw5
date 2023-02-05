@@ -14,11 +14,11 @@ public class PetNeedsInterventionInVetClinic {
 
     @Id
     @Column(name = "id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Id
     @Column(name = "id_vet_clinic", nullable = false)
-    private int vetClinicId;
+    private Integer vetClinicId;
 
     @Column(name = "date_of_interventing", nullable = false)
     private LocalDate interventionDate;

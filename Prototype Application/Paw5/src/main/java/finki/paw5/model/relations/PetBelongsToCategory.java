@@ -11,11 +11,11 @@ public class PetBelongsToCategory {
 
     @Id
     @Column(name="id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Id
     @Column(name="id_category", nullable = false)
-    private int categoryId;
+    private Integer categoryId;
 
     public PetBelongsToCategory(int petId, int categoryId) {
         this.petId = petId;

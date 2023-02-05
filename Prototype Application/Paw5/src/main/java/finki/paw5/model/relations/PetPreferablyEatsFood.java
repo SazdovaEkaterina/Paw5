@@ -11,11 +11,11 @@ public class PetPreferablyEatsFood {
 
     @Id
     @Column(name = "id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Id
     @Column(name = "id_food", nullable = false)
-    private int foodId;
+    private Integer foodId;
 
     @Column(name = "quantity_a_day", nullable = false)
     private int quantityPerDay;

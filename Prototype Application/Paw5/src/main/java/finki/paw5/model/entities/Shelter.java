@@ -11,7 +11,7 @@ public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_shelter")
-    private int id;
+    private Integer id;
 
     @Column(name = "address_shelter", nullable = false, length = 100)
     private String address;

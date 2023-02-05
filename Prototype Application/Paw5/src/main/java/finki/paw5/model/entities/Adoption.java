@@ -14,7 +14,7 @@ public class Adoption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_adoption")
-    private int id;
+    private Integer id;
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;

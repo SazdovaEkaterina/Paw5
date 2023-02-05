@@ -11,7 +11,7 @@ public class VetClinic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vet_clinic")
-    private int id;
+    private Integer id;
 
     @Column(name = "telephone_vet_clinic", nullable = false, length = 20)
     private String telephone;

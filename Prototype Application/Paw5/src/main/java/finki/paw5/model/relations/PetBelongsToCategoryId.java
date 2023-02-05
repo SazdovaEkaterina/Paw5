@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class PetBelongsToCategoryId implements Serializable {
 
-    int petId;
-    int categoryId;
+    Integer petId;
+    Integer categoryId;
 
 }
