@@ -8,6 +8,6 @@ import finki.paw5.model.enumerations.Species;
 
 public interface PostService {
 
-    Post submit (String pet_name, Gender gender, AgeGroup ageGroup, Size size, Species species, String breed, String urlimage);
+    void save (Post post);
 
 }
