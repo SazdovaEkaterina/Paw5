@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Entity
@@ -23,15 +22,15 @@ public class Post {
     private String thumbnailUrl;
 
     @Column(name="id_pet", nullable = false)
-    private int petId;
+    private Integer petId;
 
     @Column(name="id_surendee")
-    private int surendeeId;
+    private Integer surendeeId;
 
     @Column(name="id_employee")
-    private int employeeId;
+    private Integer employeeId;
 
-    public Post(LocalDate dateCreated, String thumbnailUrl, int petId, int surendeeId, int employeeId) {
+    public Post(LocalDate dateCreated, String thumbnailUrl, Integer petId, Integer surendeeId, Integer employeeId) {
         this.dateCreated = dateCreated;
         this.thumbnailUrl = thumbnailUrl;
         this.petId = petId;

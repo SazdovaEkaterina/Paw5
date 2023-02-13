@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a post</title>
+</head>
+<body>
+    <h1>Create post</h1>
+<form th:action="@{/submit-post}" method="post">
+
+    <div>
+        <label for="pet">Selet pet:</label>
+        <select id="pet">
+        </select>
+    </div>
+
+    <div>
+        <label for="newpet">Add new pet:</label>
+            <input id="newpet" name="newpet" placeholder="newpet" type="checkbox">
+    </div>
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text"
+               id="name"
+               name="name"
+               class="form-control"
+               placeholder="Enter name">
+    </div>
+
+    <div>
+        <label for="gender">Gender:</label>
+        <select id="gender"
+                name="gender"
+                class="form-control">
+            <option value = "MALE">male</option>
+            <option value = "FEMALE">female</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="ageGroup">Age Group:</label>
+        <select id="ageGroup"
+                name="ageGroup"
+                class="form-control">
+            <option value = "YOUNG">young</option>
+            <option value = "ADULT">adult</option>
+            <option value = "ELDER">elder</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="size">Size:</label>
+        <select id="size"
+                name="size"
+                class="form-control">
+            <option value = "XSMALL">extra small</option>
+            <option value = "SMALL">small</option>
+            <option value = "MEDIUM">medium</option>
+            <option value = "LARGE">large</option>
+            <option value = "XLARGE">extra large</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="species">Species:</label>
+        <select id="species"
+                name="species"
+                class="form-control">
+            <option value = "CAT">cat</option>
+            <option value = "DOG">dog</option>
+            <option value = "BIRD">bird</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="breed">Breed:</label>
+        <input type="text"
+               id="breed"
+               name="breed"
+               class="form-control"
+               placeholder="Enter breed" >
+    </div>
+
+    <div>
+        <label for="imageUrl">Image URL:</label>
+        <input type="text"
+               id="imageUrl"
+               name="imageUrl"
+               class="form-control"
+               placeholder="Enter image URL">
+        <!-- <label for="upload">Image:</label>
+        <input id="upload" type="file" accept="image/*">
+        <input type="submit">-->
+    </div>
+
+    <div>
+        <label for="canBeFostered">Can be fostered:</label>
+        <input type="checkbox"
+               id="canBeFostered"
+               name="canBeFostered"
+               class="form-control"
+               value=false>
+    </div>
+
+    <button id="submit" type="submit">Submit</button>
+
+</form>
+</body>
+</html>

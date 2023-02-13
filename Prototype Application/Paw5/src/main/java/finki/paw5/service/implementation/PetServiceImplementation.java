@@ -1,5 +1,6 @@
 package finki.paw5.service.implementation;
 
+import finki.paw5.model.entities.Pet;
 import finki.paw5.repository.PetRepository;
 import finki.paw5.service.PetService;
 import org.springframework.stereotype.Service;
@@ -13,4 +14,8 @@ public class PetServiceImplementation implements PetService {
         this.petRepository = petRepository;
     }
 
+    @Override
+    public void save(Pet pet) {
+        this.petRepository.save(pet);
+    }
 }

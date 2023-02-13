@@ -1,5 +1,6 @@
 package finki.paw5.service.implementation;
 
+import finki.paw5.model.entities.Post;
 import finki.paw5.repository.PostRepository;
 import finki.paw5.service.PostService;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,11 @@ public class PostServiceImplementation implements PostService {
 
     public PostServiceImplementation(PostRepository PostRepository){
         this.postRepository = PostRepository;
+    }
+
+    @Override
+    public void save(Post post) {
+        this.postRepository.save(post);
     }
 
 }
