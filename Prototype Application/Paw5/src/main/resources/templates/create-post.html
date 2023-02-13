@@ -27,13 +27,15 @@
         <input type="text"
                id="name"
                name="name"
+               class="form-control"
                placeholder="Enter name">
     </div>
 
     <div>
         <label for="gender">Gender:</label>
         <select id="gender"
-                name="gender">
+                name="gender"
+                class="form-control">
             <option value = "MALE">male</option>
             <option value = "FEMALE">female</option>
         </select>
@@ -42,7 +44,8 @@
     <div>
         <label for="ageGroup">Age Group:</label>
         <select id="ageGroup"
-                name="ageGroup">
+                name="ageGroup"
+                class="form-control">
             <option value = "YOUNG">young</option>
             <option value = "ADULT">adult</option>
             <option value = "ELDER">elder</option>
@@ -52,7 +55,8 @@
     <div>
         <label for="size">Size:</label>
         <select id="size"
-                name="size">
+                name="size"
+                class="form-control">
             <option value = "XSMALL">extra small</option>
             <option value = "SMALL">small</option>
             <option value = "MEDIUM">medium</option>
@@ -64,7 +68,8 @@
     <div>
         <label for="species">Species:</label>
         <select id="species"
-                name="species">
+                name="species"
+                class="form-control">
             <option value = "CAT">cat</option>
             <option value = "DOG">dog</option>
             <option value = "BIRD">bird</option>
@@ -76,6 +81,7 @@
         <input type="text"
                id="breed"
                name="breed"
+               class="form-control"
                placeholder="Enter breed" >
     </div>
 
@@ -84,6 +90,7 @@
         <input type="text"
                id="imageUrl"
                name="imageUrl"
+               class="form-control"
                placeholder="Enter image URL">
         <!-- <label for="upload">Image:</label>
         <input id="upload" type="file" accept="image/*">
@@ -94,7 +101,9 @@
         <label for="canBeFostered">Can be fostered:</label>
         <input type="checkbox"
                id="canBeFostered"
-               name="canBeFostered">
+               name="canBeFostered"
+               class="form-control"
+               value=false>
     </div>
 
     <button id="submit" type="submit">Submit</button>

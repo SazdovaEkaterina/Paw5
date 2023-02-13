@@ -43,7 +43,7 @@ public class PostController {
                            @RequestParam String species,
                            @RequestParam(required = false) String breed,
                            @RequestParam(required = false) String imageUrl,
-                           @RequestParam boolean canBeFostered) {
+                           @RequestParam(required = false) boolean canBeFostered) {
 
         Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, 1);
         this.petService.save(pet);
