@@ -48,9 +48,9 @@ public class PostController {
         Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, 1);
         this.petService.save(pet);
 
-        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, 10);
+        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, 10);//TODO: employee id da se zeme preku session user getid
         this.postService.save(post);
 
-        return null;
+        return "redirect:/home";
     }
 }
