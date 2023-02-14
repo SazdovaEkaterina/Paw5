@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Post ID</th>
+        <td th:text = "${session.post.getId()}"></td>
+    <tr>
+        <th>Pet Name</th>
+        <td th:text = "${session.pet.getName()}"></td>
+    </tr>
+    <tr>
+        <th>Species</th>
+        <td th:text = "${session.pet.getSpecies()}"></td>
+    </tr>
+    <tr>
+        <th>Breed</th>
+        <td th:text = "${session.pet.getBreed()}"></td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td th:text = "${session.pet.getGender()}"></td>
+    </tr>
+    <tr>
+        <th>Age Group</th>
+        <td th:text = "${session.pet.getAgeGroup}"></td>
+    </tr>
+    <tr>
+        <th>Size</th>
+        <td th:text = "${session.pet.getSize()}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

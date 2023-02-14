@@ -31,7 +31,7 @@ public class PersonalProfile {
     @Column(name = "grooming_needed", nullable = false)
     private GroomingNeed groomingNeed;
 
-    public PersonalProfile(int id, FriendlyToKids friendlyToKids, FriendlyToPets friendlyToPets, AttentionNeed attentionNeed, PhysicalActivity physicalActivity, GroomingNeed groomingNeed) {
+    public PersonalProfile(Integer id, FriendlyToKids friendlyToKids, FriendlyToPets friendlyToPets, AttentionNeed attentionNeed, PhysicalActivity physicalActivity, GroomingNeed groomingNeed) {
         this.id = id;
         this.friendlyToKids = friendlyToKids;
         this.friendlyToPets = friendlyToPets;

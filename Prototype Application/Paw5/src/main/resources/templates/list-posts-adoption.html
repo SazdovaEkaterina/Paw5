@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Adoption Posts</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Post ID</th>
+        <th>Pet Name</th>
+        <th>Species</th>
+    </tr>
+    <tr th:each = "post : ${session.posts}">
+        <td th:text = "${post.getId()}"></td>
+        <td th:each = "pet : ${session.pets}" th:if="${post.getPetId()==pet.getId()}" th:text = "${pet.getName()}"></td>
+        <td th:each = "pet : ${session.pets}" th:if="${post.getPetId()==pet.getId()}" th:text = "${pet.getSpecies()}"></td>
+        <td>
+            <form th:action="@{'/pet-details-{id}' (id=${post.getId()})}"
+                  th:method="GET">
+                <button type="submit"
+                        class="btn">
+                        View Details
+                </button>
+            </form>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>
