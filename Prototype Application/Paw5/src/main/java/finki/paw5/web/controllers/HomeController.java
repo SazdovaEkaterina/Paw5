@@ -13,7 +13,7 @@ public class HomeController {
         return "home";
     }
     @GetMapping("/aboutUs")
-    public String getSuccessPage(){
+    public String getAboutUsPage(){
         return "/aboutUs";
     }
 }
