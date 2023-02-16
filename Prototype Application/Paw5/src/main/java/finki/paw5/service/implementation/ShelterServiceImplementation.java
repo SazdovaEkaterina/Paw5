@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ShelterServiceImp implements ShelterService {
+public class ShelterServiceImplementation implements ShelterService {
     private final ShelterRepository shelterRepository;
 
-    public ShelterServiceImp(ShelterRepository shelterRepository) {
+    public ShelterServiceImplementation(ShelterRepository shelterRepository) {
         this.shelterRepository = shelterRepository;
     }
 

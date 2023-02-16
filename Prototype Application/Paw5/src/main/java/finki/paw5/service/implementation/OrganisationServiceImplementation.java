@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class OrganisationServiceImpl implements OrganisationService {
+public class OrganisationServiceImplementation implements OrganisationService {
     private final OrganisationRepository organisationRepository;
 
-    public OrganisationServiceImpl(OrganisationRepository organisationRepository) {
+    public OrganisationServiceImplementation(OrganisationRepository organisationRepository) {
         this.organisationRepository = organisationRepository;
     }
 
