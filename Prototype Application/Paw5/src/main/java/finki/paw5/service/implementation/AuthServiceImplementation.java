@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @Service
-public class AuthServiceImpl implements AuthService {
+public class AuthServiceImplementation implements AuthService {
 
     private final UserRepository userRepository;
     private final AdopterRepository adopterRepository;
     private final EmployeeRepository employeeRepository;
 
-    public AuthServiceImpl(UserRepository userRepository, AdopterRepository adopterRepository, EmployeeRepository employeeRepository) {
+    public AuthServiceImplementation(UserRepository userRepository, AdopterRepository adopterRepository, EmployeeRepository employeeRepository) {
         this.userRepository = userRepository;
         this.adopterRepository = adopterRepository;
         this.employeeRepository = employeeRepository;
