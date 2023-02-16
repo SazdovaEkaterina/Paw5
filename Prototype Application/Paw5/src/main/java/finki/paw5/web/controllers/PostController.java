@@ -87,6 +87,12 @@ public class PostController {
         request.getSession().setAttribute("post", post);//temp
         request.getSession().setAttribute("pet", pet);//temp
 
+        if(pet.getAdoptionId() != null){
+            request.getSession().setAttribute("disableAdoption", true);
+        } else{
+            request.getSession().setAttribute("disableAdoption", false);
+        }
+
         return "pet-details";
     }
 }

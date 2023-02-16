@@ -38,9 +38,13 @@
 <div>
   <h1>Welcome to Paw 5</h1>
   <h3>Let's get started
-    <th:block  th:text="${session.user.getName()}"></th:block>
+    <th:block  th:text="${session.user?.getName()}"></th:block>
   </h3>
 </div>
-
+<div>
+  <form method="get" th:action="@{'/adoption-posts'}">
+    <button id="submit" type="submit">View Adoption posts</button>
+  </form>
+</div>
 </body>
 </html>

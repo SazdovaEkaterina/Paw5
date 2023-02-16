@@ -39,7 +39,7 @@
 <div>
     <h5 class="text-center text-danger">
         You successfully logged in
-        <th:block  th:text="${session.user.getId()}"></th:block>
+        <th:block  th:text="${session.user?.getId()}"></th:block>
     </h5>
 </div>
 </body>
