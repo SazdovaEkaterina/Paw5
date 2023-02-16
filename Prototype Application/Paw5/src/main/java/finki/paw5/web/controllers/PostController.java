@@ -27,7 +27,7 @@ public class PostController {
         this.petService = petService;
     }
 
-    @GetMapping("create-post")
+    @GetMapping("/create-post")
     public String get(Model model) {
         //TODO: vakvo ama za lista so pets
         //        List<Manufacturer> manufacturers = this.manufacturerService.findAll();
@@ -35,7 +35,7 @@ public class PostController {
         return "create-post";
     }
 
-    @PostMapping("submit-post")
+    @PostMapping("/submit-post")
     public String savePost(@RequestParam(required = false) String name,
                            @RequestParam String gender,
                            @RequestParam String ageGroup,
