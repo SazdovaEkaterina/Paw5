@@ -1,13 +1,16 @@
 package finki.paw5.web.controllers;
 
+import finki.paw5.model.entities.Employee;
 import finki.paw5.model.entities.Pet;
 import finki.paw5.model.entities.Post;
+import finki.paw5.model.entities.User;
 import finki.paw5.model.enumerations.AgeGroup;
 import finki.paw5.model.enumerations.Gender;
 import finki.paw5.model.enumerations.Size;
 import finki.paw5.model.enumerations.Species;
 import finki.paw5.service.PetService;
 import finki.paw5.service.PostService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +32,7 @@ public class PostController {
 
     @GetMapping("/create-post")
     public String get(Model model) {
-        //TODO: vakvo ama za lista so pets
-        //        List<Manufacturer> manufacturers = this.manufacturerService.findAll();
-        //        model.addAttribute("manufacturers", manufacturers);
+        model.addAttribute("pets", this.petService.listpets());
         return "create-post";
     }
 
@@ -43,12 +44,15 @@ public class PostController {
                            @RequestParam String species,
                            @RequestParam(required = false) String breed,
                            @RequestParam(required = false) String imageUrl,
-                           @RequestParam(required = false) boolean canBeFostered) {
+                           @RequestParam(required = false) boolean canBeFostered,
+                           HttpServletRequest request) {
 
-        Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, 1);
+        Employee employee = (Employee) request.getSession().getAttribute("employee");
+
+        Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
         this.petService.save(pet);
 
-        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, 10);//TODO: employee id da se zeme preku session user getid
+        Post post = new Post(LocalDate.now(), imageUrl, pet.getId() , null, employee.getId() );
         this.postService.save(post);
 
         return "redirect:/home";

@@ -5,6 +5,8 @@ import finki.paw5.repository.PetRepository;
 import finki.paw5.service.PetService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PetServiceImplementation implements PetService {
 
@@ -18,4 +20,7 @@ public class PetServiceImplementation implements PetService {
     public void save(Pet pet) {
         this.petRepository.save(pet);
     }
+
+    @Override
+    public List<Pet> listpets() {return this.petRepository.findAll();}
 }
