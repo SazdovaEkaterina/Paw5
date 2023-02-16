@@ -36,8 +36,10 @@
         <th>Size</th>
         <td th:text = "${session.pet.getSize()}"></td>
     </tr>
-
 </table>
+<form method="POST" th:action="@{'/submit-adopton-{id}' (id=${session.pet.getId()})}" th:disabled="${session.pet.getAdoptionId()==null}">
+    <button id="submit" type="submit">Adopt</button>
+</form>
 
 </body>
 </html>
