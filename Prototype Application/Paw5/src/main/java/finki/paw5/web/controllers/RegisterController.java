@@ -41,16 +41,13 @@ public class RegisterController {
     public String registerUser(@RequestParam String name, @RequestParam String email,
                                @RequestParam String password, @RequestParam String repeatPassword,
                                @RequestParam String telephone,@RequestParam String role,
-                               HttpServletRequest request) {
+                               @RequestParam (required = false) String freeTime,  @RequestParam (required = false) String funds,
+                               @RequestParam (required = false) boolean hasOtherPets, @RequestParam (required = false) boolean hasKids,
+                               @RequestParam (required = false) String housing, @RequestParam (required = false) String physicalActivity,
+                               @RequestParam (required = false) boolean willFoster, @RequestParam (required = false) Integer shelter,
+                               @RequestParam (required = false)  String position, HttpServletRequest request) {
 
         if(role.equals("adopter") & password.equals(repeatPassword)){
-            String freeTime = request.getParameter("freeTime");
-            String funds = request.getParameter("funds");
-            boolean hasOtherPets = Boolean.parseBoolean(request.getParameter("hasOtherPets"));
-            boolean hasKids = Boolean.parseBoolean(request.getParameter("hasKids"));
-            String housing = request.getParameter("housing");
-            String physicalActivity = request.getParameter("physicalActivity");
-            boolean willFoster = Boolean.parseBoolean(request.getParameter("willFoster"));
 
             FreeTime ft = FreeTime.valueOf(freeTime);
             Funds f = Funds.valueOf(funds);
@@ -63,8 +60,6 @@ public class RegisterController {
             return "redirect:/home";
         }
         else if(role.equals("employee") & password.equals(repeatPassword)){
-            Integer shelter = Integer.valueOf(request.getParameter("shelter"));
-            String position = request.getParameter("position");
 
             Employee employeeUser = authService.registerEmployee(name, email, password, telephone,position,shelter);
 

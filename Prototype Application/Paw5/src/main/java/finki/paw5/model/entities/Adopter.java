@@ -22,10 +22,10 @@ public class Adopter extends User {
     private Funds funds;
 
     @Column(name = "has_other_pets")
-    private boolean hasOtherPets;
+    private Boolean hasOtherPets;
 
     @Column(name = "has_kids")
-    private boolean hasKids;
+    private Boolean hasKids;
 
     @Column(name = "housing")
     private Housing housing;
@@ -34,10 +34,10 @@ public class Adopter extends User {
     private PhysicalActivity physicalActivity;
 
     @Column(name = "will_foster")
-    private boolean willFoster;
+    private Boolean willFoster;
 
     @Column(name = "is_verified", nullable = false)
-    private boolean verified;
+    private Boolean verified;
 
     @Column(name = "verified_by_employee")
     private Integer verifiedByEmployeeId;
