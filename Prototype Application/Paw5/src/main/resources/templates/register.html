@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/home">Paw 5</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item m-auto">
+                        <a class="nav-link active" href="/home/aboutUs">About us</a>
+                    </li>
+                    <li class="nav-item m-auto">
+                        <a class="nav-link active" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item m-auto">
+                        <a class="nav-link active" href="/register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="middle">
+    <h1>Register</h1>
+    <div>
+        <form method="post" action="/register"> <!--vaka e na aud-->
+            <label for="name">Name and surname:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+
+            <label for="repeatPassword">Repeat password:</label>
+            <input type="password" id="repeatPassword" name="repeatPassword"><br><br>
+
+            <label for="telephone">Telephone number:</label>
+            <input type="text" id="telephone" name="telephone"><br><br>
+
+          <hr><br><br>
+
+
+            <!-- Employee -->
+            <label class="role">Register as employee in a shelter</label>
+            <input type="radio" name="role" value="employee"><br><br>
+
+            <label for="shelter">For which shelter do you work for?</label>
+            <select id="shelter" name="shelter">
+
+                <option
+                        th:each="sh : ${shelters}"
+                        th:value="${sh.getId()}"
+                        th:text="${sh.getName()}">
+                </option>
+
+            </select><br><br>
+
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position"><br><br>
+
+          <hr><br><br>
+
+
+            <!-- Adopter -->
+            <label class="role">Register as an adopter</label>
+            <input type="radio" name="role" value="adopter"><br><br>
+
+            <p>
+                *the following information is needed so we can provide our best services for you*
+            </p>
+
+            <label for="freeTime">Free time:</label>
+            <select id="freeTime" name="freeTime">
+                <option value="LOW">low</option>
+                <option value="MEDIUM">medium</option>
+                <option value="HIGH">high</option>
+            </select><br><br>
+
+            <label for="funds">Finances:</label>
+            <select id="funds" name="funds">
+                <option value="LOW">low</option>
+                <option value="MEDIUM">medium</option>
+                <option value="HIGH">high</option>
+            </select><br><br>
+
+            <label>Do you keep other pets?</label>
+            <input type="radio" class="hasPets" name="hasOtherPets" value=true> Yes
+            <input type="radio" class="hasPets" name="hasOtherPets" value=false> No <br><br>
+
+            <label>Will the adopted pet have interaction with kids?</label>
+            <input type="radio" name="hasKids" value=true>Yes
+            <input type="radio" name="hasKids" value=false>No<br><br>
+
+            <label for="housing">Housing:</label>
+            <select id="housing" name="housing">
+                <option value="APARTMENT">apartment</option>
+                <option value="HOUSE">house</option>
+            </select><br><br>
+
+            <label for="physicalActivity">Physical activity:</label>
+            <select id="physicalActivity" name="physicalActivity">
+                <option value="LOW">low</option>
+                <option value="MEDIUM">medium</option>
+                <option value="HIGH">high</option>
+            </select><br><br>
+
+            <label>Are you willing to foster?</label>
+            <input type="radio" name="willFoster" value=true>Yes
+            <input type="radio" name="willFoster" value=false>No<br><br>
+
+          <hr><br>
+
+            <!-- Donor -->
+            <label class="role">Register as donor</label>
+            <input type="radio" name="role" value="donor"><br><br>
+
+            <label for="organisation">From which organisation are you coming from?</label>
+            <select id="organisation" name="organisation">
+                <option
+                        th:each="sh : ${organisations}"
+                        th:value="${sh.getId()}"
+                        th:text="${sh.getName()}">
+                </option>
+            </select><br><br>
+
+          <hr><br>
+
+            <!-- Surendee -->
+            <label class="role">Register as surendee</label>
+            <input type="radio" name="role" value="surendee"><br><br>
+
+            <input id="button" type="submit" value="Submit">
+        </form>
+    </div>
+  <p>You want to adopt or foster a pet? - You are an adopter <br>
+    You want your pet to be adopted by another person? - You are a surendee <br>
+    You want to donate to an organisation protection animal rights? - You are a donor<br>
+    You work in one of our partner's shelters? - You are an employee <br>
+  </p>
+</div>
+</body>
+<style>
+    body {
+        color: #212121;
+    }
+
+    form {
+        background-color: lightgray;
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        width: 60%;
+        margin-left: 300px;
+    }
+
+    body {
+        font-family: Montserrat, serif;
+    }
+
+    #button {
+        background-color: #212121;
+        color: azure;
+        border: none;
+        height: 40px;
+        width: 80px;
+        border-radius: 20px;
+    }
+    #middle{
+      text-align: center;
+    }
+    .role{
+      color:darkred;
+    }
+</style>
+</html>

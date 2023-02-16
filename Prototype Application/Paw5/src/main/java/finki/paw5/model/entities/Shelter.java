@@ -20,7 +20,7 @@ public class Shelter {
     private String telephone;
 
     @Column(name = "id_organisation")
-    private int organisationId;
+    private Integer organisationId;
 
     @Column(name = "name_shelter", nullable = false, length = 100)
     private String name;
@@ -28,7 +28,7 @@ public class Shelter {
     @Column(name = "email_shelter", nullable = false, length = 100, unique = true)
     private String email;
 
-    public Shelter(String address, String telephone, int organisationId, String name, String email) {
+    public Shelter(String address, String telephone, Integer organisationId, String name, String email) {
         this.address = address;
         this.telephone = telephone;
         this.organisationId = organisationId;
