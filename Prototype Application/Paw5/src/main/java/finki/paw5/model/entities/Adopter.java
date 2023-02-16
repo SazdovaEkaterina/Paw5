@@ -22,10 +22,10 @@ public class Adopter extends User {
     private Funds funds;
 
     @Column(name = "has_other_pets")
-    private boolean hasOtherPets;
+    private Boolean hasOtherPets;
 
     @Column(name = "has_kids")
-    private boolean hasKids;
+    private Boolean hasKids;
 
     @Column(name = "housing")
     private Housing housing;
@@ -34,17 +34,17 @@ public class Adopter extends User {
     private PhysicalActivity physicalActivity;
 
     @Column(name = "will_foster")
-    private boolean willFoster;
+    private Boolean willFoster;
 
     @Column(name = "is_verified", nullable = false)
-    private boolean verified;
+    private Boolean verified;
 
     @Column(name = "verified_by_employee")
-    private int verifiedByEmployeeId;
+    private Integer verifiedByEmployeeId;
 
     public Adopter(LocalDate dateCreated, String name, String email, String password, String telephone,
                    FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
-                   PhysicalActivity physicalActivity, boolean willFoster, boolean verified, int verifiedByEmployeeId) {
+                   PhysicalActivity physicalActivity, boolean willFoster, boolean verified) {
         super(dateCreated, name, email, password, telephone);
         this.freeTime = freeTime;
         this.funds = funds;
@@ -54,7 +54,6 @@ public class Adopter extends User {
         this.physicalActivity = physicalActivity;
         this.willFoster = willFoster;
         this.verified = verified;
-        this.verifiedByEmployeeId = verifiedByEmployeeId;
     }
 
     public Adopter(FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
