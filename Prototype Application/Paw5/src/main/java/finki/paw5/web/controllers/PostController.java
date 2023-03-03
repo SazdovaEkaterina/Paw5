@@ -47,12 +47,12 @@ public class PostController {
                            @RequestParam(required = false) boolean canBeFostered,
                            HttpServletRequest request) {
 
-        Employee employee = (Employee) request.getSession().getAttribute("employee");
+        Employee employee = (Employee) request.getSession().getAttribute("user");
 
         Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
         this.petService.save(pet);
 
-        Post post = new Post(LocalDate.now(), imageUrl, pet.getId() , null, employee.getId() );
+        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, employee.getId());
         this.postService.save(post);
 
         return "redirect:/home";
