@@ -1,9 +1,7 @@
 package finki.paw5.web.controllers;
-
-import finki.paw5.model.entities.PersonalProfile;
 import finki.paw5.model.entities.Pet;
 import finki.paw5.model.entities.Post;
-import finki.paw5.model.entities.Shelter;
+import finki.paw5.model.entities.Employee;
 import finki.paw5.model.enumerations.AgeGroup;
 import finki.paw5.model.enumerations.Gender;
 import finki.paw5.model.enumerations.Size;
@@ -36,29 +34,43 @@ public class PostController {
         this.personalProfileService = personalProfileService;
     }
 
-    @GetMapping("create-post")
+    @GetMapping("/create-post")
     public String get(Model model) {
-        //TODO: vakvo ama za lista so pets
-        //        List<Manufacturer> manufacturers = this.manufacturerService.findAll();
-        //        model.addAttribute("manufacturers", manufacturers);
+        model.addAttribute("pets", this.petService.listpets());
         return "create-post";
     }
 
-    @PostMapping("submit-post")
-    public String savePost(@RequestParam(required = false) String name,
-                           @RequestParam String gender,
-                           @RequestParam String ageGroup,
-                           @RequestParam String size,
-                           @RequestParam String species,
+    @PostMapping("/submit-post")
+    public String savePost(@RequestParam(required = false) Integer petId,
+                           @RequestParam(required = false) boolean newPetCheckbox,
+                           @RequestParam(required = false) String name,
+                           @RequestParam(required = false) String gender,
+                           @RequestParam(required = false) String ageGroup,
+                           @RequestParam(required = false) String size,
+                           @RequestParam(required = false) String species,
                            @RequestParam(required = false) String breed,
                            @RequestParam(required = false) String imageUrl,
-                           @RequestParam(required = false) boolean canBeFostered) {
+                           @RequestParam(required = false) boolean canBeFostered,
+                           HttpServletRequest request) {
 
-        Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, 1);
-        this.petService.save(pet);
+        Employee employee = (Employee) request.getSession().getAttribute("user");
 
-        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, 10);//TODO: employee id da se zeme preku session user getid
-        this.postService.save(post);
+        if(newPetCheckbox == true){
+
+            Pet newPet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
+            this.petService.save(newPet);
+
+            Post post = new Post(LocalDate.now(), imageUrl, newPet.getId(), null, employee.getId());
+            this.postService.save(post);
+
+        } else{
+
+            Pet selectedPet = this.petService.findById(petId);
+
+            Post post = new Post(LocalDate.now(), imageUrl, selectedPet.getId(), null, employee.getId());
+            this.postService.save(post);
+
+        }
 
         return "redirect:/home";
     }
@@ -67,7 +79,7 @@ public class PostController {
     public String getAdoptionPosts(Model model, HttpServletRequest request){
 
         List<Post> posts = this.postService.findAll();
-        List<Pet> pets = this.petService.findAll();
+        List<Pet> pets = this.petService.listpets();
         //model.addAttribute("posts", posts);
         //model.addAttribute("pets",pets);
         request.getSession().setAttribute("posts",posts);//temp
@@ -80,7 +92,7 @@ public class PostController {
     public String getPostDetails(@PathVariable Integer id, Model model, HttpServletRequest request){
 
         Post post = this.postService.findById(id).get();
-        Pet pet = this.petService.findById(post.getPetId()).get();
+        Pet pet = this.petService.findById(post.getPetId());
 
         //model.addAttribute("pet", pet);
         //model.addAttribute("post", post);

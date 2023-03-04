@@ -1,7 +1,6 @@
 package finki.paw5.service;
 
 import finki.paw5.model.entities.Post;
-
 import java.util.List;
 import java.util.Optional;
 

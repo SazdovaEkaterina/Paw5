@@ -27,7 +27,7 @@ public class PetController {
     @PostMapping("/submit-adopton-{id}")
     public String saveAdoption(@PathVariable Integer id, HttpServletRequest request) {
 
-        Pet pet = this.petService.findById(id).orElseThrow(InvalidPetIdException::new);
+        Pet pet = this.petService.findById(id);
         
         User user = (User) request.getSession().getAttribute("user");
 
