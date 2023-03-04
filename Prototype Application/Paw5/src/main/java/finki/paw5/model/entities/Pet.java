@@ -42,12 +42,12 @@ public class Pet {
     private boolean canBeFostered;
 
     @Column(name = "id_adoption")
-    private int adoptionId;
+    private Integer adoptionId;
 
     @Column(name = "id_shelter")
-    private int shelterId;
+    private Integer shelterId;
 
-    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed, String name, Species species, Gender gender, boolean canBeFostered, int adoptionId, int shelterId) {
+    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed, String name, Species species, Gender gender, boolean canBeFostered, Integer adoptionId, Integer shelterId) {
         this.imageUrl = imageUrl;
         this.ageGroup = ageGroup;
         this.size = size;
