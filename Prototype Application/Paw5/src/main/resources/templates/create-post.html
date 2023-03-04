@@ -10,6 +10,37 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function addNewPet(addNewPetCheckBox){
+
+            if(addNewPetCheckBox.checked){
+
+                document.getElementById("name").disabled = false;
+                document.getElementById("gender").disabled = false;
+                document.getElementById("ageGroup").disabled = false;
+                document.getElementById("size").disabled = false;
+                document.getElementById("species").disabled = false;
+                document.getElementById("breed").disabled = false;
+                document.getElementById("imageUrl").disabled = false;
+                document.getElementById("canBeFostered").disabled = false;
+
+                document.getElementById("petId").disabled = true;
+            } else{
+
+                document.getElementById("name").disabled = true;
+                document.getElementById("gender").disabled = true;
+                document.getElementById("ageGroup").disabled = true;
+                document.getElementById("size").disabled = true;
+                document.getElementById("species").disabled = true;
+                document.getElementById("breed").disabled = true;
+                document.getElementById("imageUrl").disabled = true;
+                document.getElementById("canBeFostered").disabled = true;
+
+                document.getElementById("petId").disabled = false;
+
+            }
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -41,18 +72,19 @@
 <form th:action="@{/submit-post}" method="post">
 
     <div>
-        <label for="pet">Select pet:</label>
-        <select id="pet">
+        <label for="petId">Select pet:</label>
+        <select id="petId" name="petId">
             <option
             th:each="pet :${pets}"
-            th:text="${pet.getName()}">
+            th:text="${pet.getName()}"
+            th:value="${pet.getId()}">
             </option>
         </select>
     </div>
 
     <div>
-        <label for="newpet">Add new pet:</label>
-            <input id="newpet" name="newpet" placeholder="newpet" type="checkbox">
+        <label for="newPetCheckbox">Add new pet:</label>
+            <input id="newPetCheckbox" name="newPetCheckbox" type="checkbox" onclick="addNewPet(this)">
     </div>
 
     <div>
@@ -61,14 +93,16 @@
                id="name"
                name="name"
                class="form-control"
-               placeholder="Enter name">
+               placeholder="Enter name"
+               disabled>
     </div>
 
     <div>
         <label for="gender">Gender:</label>
         <select id="gender"
                 name="gender"
-                class="form-control">
+                class="form-control"
+                disabled>
             <option value = "MALE">male</option>
             <option value = "FEMALE">female</option>
         </select>
@@ -78,7 +112,8 @@
         <label for="ageGroup">Age Group:</label>
         <select id="ageGroup"
                 name="ageGroup"
-                class="form-control">
+                class="form-control"
+                disabled>
             <option value = "YOUNG">young</option>
             <option value = "ADULT">adult</option>
             <option value = "ELDER">elder</option>
@@ -89,7 +124,8 @@
         <label for="size">Size:</label>
         <select id="size"
                 name="size"
-                class="form-control">
+                class="form-control"
+                disabled>
             <option value = "XSMALL">extra small</option>
             <option value = "SMALL">small</option>
             <option value = "MEDIUM">medium</option>
@@ -102,7 +138,8 @@
         <label for="species">Species:</label>
         <select id="species"
                 name="species"
-                class="form-control">
+                class="form-control"
+                disabled>
             <option value = "CAT">cat</option>
             <option value = "DOG">dog</option>
             <option value = "BIRD">bird</option>
@@ -115,7 +152,8 @@
                id="breed"
                name="breed"
                class="form-control"
-               placeholder="Enter breed" >
+               placeholder="Enter breed"
+               disabled>
     </div>
 
     <div>
@@ -124,7 +162,8 @@
                id="imageUrl"
                name="imageUrl"
                class="form-control"
-               placeholder="Enter image URL">
+               placeholder="Enter image URL"
+               disabled>
         <!-- <label for="upload">Image:</label>
         <input id="upload" type="file" accept="image/*">
         <input type="submit">-->
@@ -136,7 +175,8 @@
                id="canBeFostered"
                name="canBeFostered"
                class="form-control"
-               value=false>
+               value=false
+               disabled>
     </div>
 
     <button id="submit" type="submit">Submit</button>

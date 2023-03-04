@@ -23,4 +23,9 @@ public class PetServiceImplementation implements PetService {
 
     @Override
     public List<Pet> listpets() {return this.petRepository.findAll();}
+
+    @Override
+    public Pet findById(Integer id) {
+        return this.petRepository.findById(id).get();
+    }
 }

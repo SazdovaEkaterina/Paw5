@@ -9,4 +9,6 @@ public interface PetService {
     void save (Pet pet);
 
     List<Pet> listpets();
+
+    Pet findById(Integer id);
 }

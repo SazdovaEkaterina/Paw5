@@ -37,11 +37,13 @@ public class PostController {
     }
 
     @PostMapping("/submit-post")
-    public String savePost(@RequestParam(required = false) String name,
-                           @RequestParam String gender,
-                           @RequestParam String ageGroup,
-                           @RequestParam String size,
-                           @RequestParam String species,
+    public String savePost(@RequestParam(required = false) Integer petId,
+                           @RequestParam(required = false) boolean newPetCheckbox,
+                           @RequestParam(required = false) String name,
+                           @RequestParam(required = false) String gender,
+                           @RequestParam(required = false) String ageGroup,
+                           @RequestParam(required = false) String size,
+                           @RequestParam(required = false) String species,
                            @RequestParam(required = false) String breed,
                            @RequestParam(required = false) String imageUrl,
                            @RequestParam(required = false) boolean canBeFostered,
@@ -49,11 +51,22 @@ public class PostController {
 
         Employee employee = (Employee) request.getSession().getAttribute("user");
 
-        Pet pet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
-        this.petService.save(pet);
+        if(newPetCheckbox == true){
 
-        Post post = new Post(LocalDate.now(), imageUrl, pet.getId(), null, employee.getId());
-        this.postService.save(post);
+            Pet newPet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
+            this.petService.save(newPet);
+
+            Post post = new Post(LocalDate.now(), imageUrl, newPet.getId(), null, employee.getId());
+            this.postService.save(post);
+
+        } else{
+
+            Pet selectedPet = this.petService.findById(petId);
+
+            Post post = new Post(LocalDate.now(), imageUrl, selectedPet.getId(), null, employee.getId());
+            this.postService.save(post);
+
+        }
 
         return "redirect:/home";
     }
