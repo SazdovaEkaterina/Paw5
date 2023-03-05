@@ -76,34 +76,25 @@ public class PostController {
     }
 
     @GetMapping("/adoption-posts")
-    public String getAdoptionPosts(Model model, HttpServletRequest request){
+    public String getAdoptionPosts(Model model){
 
         List<Post> posts = this.postService.findAll();
         List<Pet> pets = this.petService.listpets();
-        //model.addAttribute("posts", posts);
-        //model.addAttribute("pets",pets);
-        request.getSession().setAttribute("posts",posts);//temp
-        request.getSession().setAttribute("pets",pets);//temp
+        model.addAttribute("posts", posts);
+        model.addAttribute("pets",pets);
 
         return "list-posts-adoption";
     }
 
     @GetMapping("/pet-details-{id}")
-    public String getPostDetails(@PathVariable Integer id, Model model, HttpServletRequest request){
+    public String getPostDetails(@PathVariable Integer id,
+                                 Model model){
 
         Post post = this.postService.findById(id).get();
         Pet pet = this.petService.findById(post.getPetId());
 
-        //model.addAttribute("pet", pet);
-        //model.addAttribute("post", post);
-        request.getSession().setAttribute("post", post);//temp
-        request.getSession().setAttribute("pet", pet);//temp
-
-        if(pet.getAdoptionId() != null){
-            request.getSession().setAttribute("disableAdoption", true);
-        } else{
-            request.getSession().setAttribute("disableAdoption", false);
-        }
+        model.addAttribute("pet", pet);
+        model.addAttribute("post", post);
 
         return "pet-details";
     }
