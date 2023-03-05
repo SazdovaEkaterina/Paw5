@@ -21,7 +21,6 @@ public class PetServiceImplementation implements PetService {
         this.petRepository.save(pet);
     }
 
-    @Override
     public List<Pet> listpets() {return this.petRepository.findAll();}
 
     @Override
