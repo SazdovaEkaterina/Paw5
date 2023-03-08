@@ -2,12 +2,14 @@ package finki.paw5.model.relations;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "pet_needs_intervention_in_vet_clinic")
 @IdClass(PetNeedsInterventionInVetClinicId.class)
 public class PetNeedsInterventionInVetClinic {
@@ -31,9 +33,5 @@ public class PetNeedsInterventionInVetClinic {
         this.vetClinicId = vetClinicId;
         this.interventionDate = interventionDate;
         this.description = description;
-    }
-
-    public PetNeedsInterventionInVetClinic() {
-
     }
 }
