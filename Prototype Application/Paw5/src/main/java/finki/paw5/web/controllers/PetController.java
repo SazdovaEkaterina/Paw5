@@ -1,9 +1,8 @@
 package finki.paw5.web.controllers;
 
+import finki.paw5.model.entities.Adopter;
 import finki.paw5.model.entities.Adoption;
 import finki.paw5.model.entities.Pet;
-import finki.paw5.model.entities.User;
-import finki.paw5.model.exceptions.InvalidPetIdException;
 import finki.paw5.service.AdoptionService;
 import finki.paw5.service.PetService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,17 +23,17 @@ public class PetController {
         this.adoptionService = adoptionService;
     }
 
-    @PostMapping("/submit-adopton-{id}")
+    @PostMapping("/submit-adoption-{id}")
     public String saveAdoption(@PathVariable Integer id, HttpServletRequest request) {
 
         Pet pet = this.petService.findById(id);
         
-        User user = (User) request.getSession().getAttribute("user");
+        Adopter adopter = (Adopter) request.getSession().getAttribute("user");
 
-        Adoption adoption = new Adoption(LocalDate.now(), null, false, user.getId());
+        Adoption adoption = new Adoption(LocalDate.now(), null, false, adopter);
         this.adoptionService.save(adoption);
 
-        pet.setAdoptionId(adoption.getId());
+        pet.setAdoption(adoption);
         this.petService.save(pet);
 
         return "redirect:/home";

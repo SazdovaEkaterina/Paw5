@@ -46,8 +46,8 @@
     </tr>
     <tr th:each = "post : ${posts}">
         <td th:text = "${post.getId()}"></td>
-        <td th:each = "pet : ${pets}" th:if="${post.getPetId()==pet.getId()}" th:text = "${pet.getName()}"></td>
-        <td th:each = "pet : ${pets}" th:if="${post.getPetId()==pet.getId()}" th:text = "${pet.getSpecies()}"></td>
+        <td th:text = "${post.getPet().getName()}"></td>
+        <td th:text = "${post.getPet().getSpecies()}"></td>
         <td>
             <form th:action="@{'/pet-details-{id}' (id=${post.getId()})}"
                   th:method="GET">

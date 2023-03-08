@@ -57,17 +57,17 @@ public class PostController {
 
         if(newPetCheckbox == true){
 
-            Pet newPet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelterId());
+            Pet newPet = new Pet(imageUrl, AgeGroup.valueOf(ageGroup), Size.valueOf(size), breed, name, Species.valueOf(species), Gender.valueOf(gender), canBeFostered, null, employee.getShelter());
             this.petService.save(newPet);
 
-            Post post = new Post(LocalDate.now(), imageUrl, newPet.getId(), null, employee.getId());
+            Post post = new Post(LocalDate.now(), imageUrl, newPet, null, employee);
             this.postService.save(post);
 
         } else{
 
             Pet selectedPet = this.petService.findById(petId);
 
-            Post post = new Post(LocalDate.now(), imageUrl, selectedPet.getId(), null, employee.getId());
+            Post post = new Post(LocalDate.now(), imageUrl, selectedPet, null, employee);
             this.postService.save(post);
 
         }
@@ -91,7 +91,7 @@ public class PostController {
                                  Model model){
 
         Post post = this.postService.findById(id).get();
-        Pet pet = this.petService.findById(post.getPetId());
+        Pet pet = post.getPet();
 
         model.addAttribute("pet", pet);
         model.addAttribute("post", post);
