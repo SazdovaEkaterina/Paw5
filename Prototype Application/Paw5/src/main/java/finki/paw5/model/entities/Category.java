@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @RequiredArgsConstructor
@@ -17,6 +19,12 @@ public class Category {
 
     @Column(name = "name_category", nullable = false, length = 100)
     private String name;
+
+    @ManyToMany
+    @JoinTable(name = "pet_belongs_to_category",
+            joinColumns = @JoinColumn(name = "id_category"),
+            inverseJoinColumns = @JoinColumn(name = "id_pet"))
+    List<Pet> pets;
 
     public Category(String name) {
         this.name = name;

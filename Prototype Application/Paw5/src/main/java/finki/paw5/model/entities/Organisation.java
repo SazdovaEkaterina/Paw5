@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @RequiredArgsConstructor
@@ -23,6 +25,12 @@ public class Organisation {
 
     @Column(name = "billing_information", nullable = false, length = 20, unique = true)
     private String billingInformation;
+
+    @ManyToMany
+    @JoinTable(name = "donor_donates_to_organisation",
+            joinColumns = @JoinColumn(name = "id_organisation"),
+            inverseJoinColumns = @JoinColumn(name = "id_user"))
+    List<Donor> donors;
 
     public Organisation(String name, String email, String billingInformation) {
         this.name = name;

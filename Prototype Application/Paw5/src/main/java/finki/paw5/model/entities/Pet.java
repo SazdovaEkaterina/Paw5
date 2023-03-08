@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @RequiredArgsConstructor
@@ -50,6 +52,30 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "id_shelter")
     private Shelter shelter;
+
+    @ManyToMany
+    @JoinTable(name = "pet_belongs_to_category",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_category"))
+    List<Category> categories;
+
+    @ManyToMany
+    @JoinTable(name = "pet_needs_intervention_in_vet_clinic",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_vet_clinic"))
+    List<VetClinic> vetClinicsTreatedIn;
+
+    @ManyToMany
+    @JoinTable(name = "pet_needs_therapy",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_therapy"))
+    List<Therapy> therapies;
+
+    @ManyToMany
+    @JoinTable(name = "pet_preferably_eats_food",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_food"))
+    List<Food> preferredFoods;
 
     public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed,
                String name, Species species, Gender gender, Boolean canBeFostered,
