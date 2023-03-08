@@ -2,9 +2,11 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "organisation")
 public class Organisation {
 
@@ -26,8 +28,5 @@ public class Organisation {
         this.name = name;
         this.email = email;
         this.billingInformation = billingInformation;
-    }
-
-    public Organisation() {
     }
 }

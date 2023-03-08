@@ -3,9 +3,11 @@ package finki.paw5.model.entities;
 import finki.paw5.model.enumerations.FoodType;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "food")
 public class Food {
 
@@ -27,8 +29,5 @@ public class Food {
         this.manufacturer = manufacturer;
         this.name = name;
         this.type = type;
-    }
-
-    public Food() {
     }
 }

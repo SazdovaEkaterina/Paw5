@@ -2,9 +2,11 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "category")
 public class Category {
 
@@ -20,6 +22,4 @@ public class Category {
         this.name = name;
     }
 
-    public Category() {
-    }
 }

@@ -2,12 +2,14 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "user_table")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
@@ -38,8 +40,5 @@ public class User {
         this.email = email;
         this.password = password;
         this.telephone = telephone;
-    }
-
-    public User() {
     }
 }

@@ -2,12 +2,14 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "therapy")
 public class Therapy {
 
@@ -29,8 +31,5 @@ public class Therapy {
         this.healthProblem = healthProblem;
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public Therapy() {
     }
 }

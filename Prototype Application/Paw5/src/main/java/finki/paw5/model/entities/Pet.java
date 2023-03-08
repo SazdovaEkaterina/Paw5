@@ -6,9 +6,11 @@ import finki.paw5.model.enumerations.Size;
 import finki.paw5.model.enumerations.Species;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "pet")
 public class Pet {
 
@@ -39,15 +41,19 @@ public class Pet {
     private Gender gender;
 
     @Column(name = "can_be_fostered", nullable = false)
-    private boolean canBeFostered;
+    private Boolean canBeFostered;
 
-    @Column(name = "id_adoption")
-    private Integer adoptionId;
+    @ManyToOne
+    @JoinColumn(name = "id_adoption")
+    private Adoption adoption;
 
-    @Column(name = "id_shelter")
-    private Integer shelterId;
+    @ManyToOne
+    @JoinColumn(name = "id_shelter")
+    private Shelter shelter;
 
-    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed, String name, Species species, Gender gender, boolean canBeFostered, Integer adoptionId, Integer shelterId) {
+    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed,
+               String name, Species species, Gender gender, Boolean canBeFostered,
+               Adoption adoption, Shelter shelter) {
         this.imageUrl = imageUrl;
         this.ageGroup = ageGroup;
         this.size = size;
@@ -56,10 +62,7 @@ public class Pet {
         this.species = species;
         this.gender = gender;
         this.canBeFostered = canBeFostered;
-        this.adoptionId = adoptionId;
-        this.shelterId = shelterId;
-    }
-
-    public Pet() {
+        this.adoption = adoption;
+        this.shelter = shelter;
     }
 }
