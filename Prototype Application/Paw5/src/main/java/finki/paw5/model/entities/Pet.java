@@ -21,6 +21,10 @@ public class Pet {
     @Column(name = "id_pet")
     private Integer id;
 
+    @OneToOne
+    @JoinColumn(name = "id_pet", nullable = false)
+    private PersonalProfile personalProfile;
+
     @Column(name = "url_pet_image", length = 200)
     private String imageUrl;
 
