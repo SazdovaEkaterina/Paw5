@@ -68,7 +68,7 @@
 </table>
 <form method="POST"
       th:action="@{'/submit-adoption-{id}' (id=${pet.getId()})}"
-      th:if="${pet.getAdoption==null}">
+      th:if="${pet.getAdoption()==null}">
     <button id="submit"
             type="submit"
             class="btn">Adopt</button>
