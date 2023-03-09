@@ -23,7 +23,7 @@ public class Post {
     @Column(name="url_thumbanail", length = 200)
     private String thumbnailUrl;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="id_pet", nullable = false)
     private Pet pet;
 
