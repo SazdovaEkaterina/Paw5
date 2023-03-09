@@ -2,9 +2,11 @@ package finki.paw5.model.relations;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "pet_preferably_eats_food")
 @IdClass(PetPreferablyEatsFoodId.class)
 public class PetPreferablyEatsFood {
@@ -24,8 +26,5 @@ public class PetPreferablyEatsFood {
         this.petId = petId;
         this.foodId = foodId;
         this.quantityPerDay = quantityPerDay;
-    }
-
-    public PetPreferablyEatsFood() {
     }
 }

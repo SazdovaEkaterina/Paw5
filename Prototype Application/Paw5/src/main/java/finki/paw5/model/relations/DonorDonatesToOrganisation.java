@@ -2,9 +2,11 @@ package finki.paw5.model.relations;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "donor_donates_to_organisation")
 @IdClass(DonorDonatesToOrganisationId.class)
 public class DonorDonatesToOrganisation {
@@ -20,9 +22,5 @@ public class DonorDonatesToOrganisation {
     public DonorDonatesToOrganisation(int userId, int organisationId) {
         this.userId = userId;
         this.organisationId = organisationId;
-    }
-
-    public DonorDonatesToOrganisation() {
-        
     }
 }

@@ -2,9 +2,11 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "shelter")
 public class Shelter {
 
@@ -19,8 +21,9 @@ public class Shelter {
     @Column(name = "telephone_shelter", nullable = false, length = 20)
     private String telephone;
 
-    @Column(name = "id_organisation")
-    private Integer organisationId;
+    @ManyToOne
+    @JoinColumn(name = "id_organisation")
+    private Organisation organisation;
 
     @Column(name = "name_shelter", nullable = false, length = 100)
     private String name;
@@ -28,14 +31,12 @@ public class Shelter {
     @Column(name = "email_shelter", nullable = false, length = 100, unique = true)
     private String email;
 
-    public Shelter(String address, String telephone, Integer organisationId, String name, String email) {
+    public Shelter(String address, String telephone, Organisation organisation,
+                   String name, String email) {
         this.address = address;
         this.telephone = telephone;
-        this.organisationId = organisationId;
+        this.organisation = organisation;
         this.name = name;
         this.email = email;
-    }
-
-    public Shelter() {
     }
 }

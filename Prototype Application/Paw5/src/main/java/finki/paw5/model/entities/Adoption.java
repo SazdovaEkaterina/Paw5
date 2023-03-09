@@ -2,11 +2,13 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "adoption")
 public class Adoption {
 
@@ -22,18 +24,17 @@ public class Adoption {
     private LocalDate endDateFoster;
 
     @Column(name = "approved", nullable = false)
-    private boolean approved;
+    private Boolean approved;
 
-    @Column(name = "id_adopter", nullable = false)
-    private Integer adopterId;
+    @ManyToOne
+    @JoinColumn(name = "id_adopter", nullable = false)
+    private Adopter adopter;
 
-    public Adoption(LocalDate startDate, LocalDate endDateFoster, boolean approved, Integer adopterId) {
+    public Adoption(LocalDate startDate, LocalDate endDateFoster, Boolean approved,
+                    Adopter adopter) {
         this.startDate = startDate;
         this.endDateFoster = endDateFoster;
         this.approved = approved;
-        this.adopterId = adopterId;
-    }
-
-    public Adoption() {
+        this.adopter = adopter;
     }
 }
