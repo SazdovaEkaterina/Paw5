@@ -20,7 +20,7 @@ public class AdopterServiceImplementation implements AdopterService {
     public List<Adopter> findAllThatNeedApproval() {
 
         return adopterRepository.findAll().stream()
-                .filter(a -> !a.getVerified() & a.getVerifiedByEmployeeId() == null)
+                .filter(a -> !a.getVerified() & a.getemployeeVerificator() == null)
                 .collect(Collectors.toList());
     }
 }
