@@ -18,7 +18,7 @@ public class HomeController {
     }
 
     @GetMapping("/aboutUs")
-    public String getSuccessPage() {
+    public String getAboutUsPage(){
         return "/aboutUs";
     }
 }
