@@ -2,12 +2,13 @@ package finki.paw5.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "post")
 public class Post {
 
@@ -22,23 +23,24 @@ public class Post {
     @Column(name="url_thumbanail", length = 200)
     private String thumbnailUrl;
 
-    @Column(name="id_pet", nullable = false)
-    private int petId;
+    @OneToOne
+    @JoinColumn(name="id_pet", nullable = false)
+    private Pet pet;
 
-    @Column(name="id_surendee")
-    private int surendeeId;
+    @ManyToOne
+    @JoinColumn(name="id_surendee")
+    private Surendee surendeePoster;
 
-    @Column(name="id_employee")
-    private int employeeId;
+    @ManyToOne
+    @JoinColumn(name="id_employee")
+    private Employee employeePoster;
 
-    public Post(LocalDate dateCreated, String thumbnailUrl, int petId, int surendeeId, int employeeId) {
+    public Post(LocalDate dateCreated, String thumbnailUrl,
+                Pet pet, Surendee surendeePoster, Employee employeePoster) {
         this.dateCreated = dateCreated;
         this.thumbnailUrl = thumbnailUrl;
-        this.petId = petId;
-        this.surendeeId = surendeeId;
-        this.employeeId = employeeId;
-    }
-
-    public Post() {
+        this.pet = pet;
+        this.surendeePoster = surendeePoster;
+        this.employeePoster = employeePoster;
     }
 }

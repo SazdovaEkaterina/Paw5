@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -40,13 +40,25 @@
     </div>
   </nav>
 </header>
-
 <div>
   <h1>Welcome to Paw 5</h1>
   <h3 th:if="${session.user != null}">Let's get started
     <th:block  th:text="${session.user.getName()}"></th:block>
   </h3>
 </div>
-
+<div>
+  <form method="get" th:action="@{'/create-post'}">
+    <button id="createPost"
+            type="submit"
+            class="btn">Create an Adoption Post</button>
+  </form>
+</div>
+<div>
+  <form method="get" th:action="@{'/adoption-posts'}">
+    <button id="submit"
+            type="submit"
+            class="btn">View Pet Posts</button>
+  </form>
+</div>
 </body>
 </html>

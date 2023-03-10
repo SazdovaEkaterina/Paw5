@@ -3,9 +3,13 @@ package finki.paw5.model.entities;
 import finki.paw5.model.enumerations.FoodType;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "food")
 public class Food {
 
@@ -23,12 +27,15 @@ public class Food {
     @Column(name = "type_food", nullable = false)
     private FoodType type;
 
+    @ManyToMany
+    @JoinTable(name = "pet_preferably_eats_food",
+            joinColumns = @JoinColumn(name = "id_food"),
+            inverseJoinColumns = @JoinColumn(name = "id_pet"))
+    List<Pet> pets;
+
     public Food(String manufacturer, String name, FoodType type) {
         this.manufacturer = manufacturer;
         this.name = name;
         this.type = type;
-    }
-
-    public Food() {
     }
 }

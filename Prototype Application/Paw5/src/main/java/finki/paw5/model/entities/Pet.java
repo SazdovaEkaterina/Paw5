@@ -6,9 +6,13 @@ import finki.paw5.model.enumerations.Size;
 import finki.paw5.model.enumerations.Species;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "pet")
 public class Pet {
 
@@ -16,6 +20,10 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pet")
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "id_pet", nullable = false)
+    private PersonalProfile personalProfile;
 
     @Column(name = "url_pet_image", length = 200)
     private String imageUrl;
@@ -39,15 +47,43 @@ public class Pet {
     private Gender gender;
 
     @Column(name = "can_be_fostered", nullable = false)
-    private boolean canBeFostered;
+    private Boolean canBeFostered;
 
-    @Column(name = "id_adoption")
-    private int adoptionId;
+    @ManyToOne
+    @JoinColumn(name = "id_adoption")
+    private Adoption adoption;
 
-    @Column(name = "id_shelter")
-    private int shelterId;
+    @ManyToOne
+    @JoinColumn(name = "id_shelter")
+    private Shelter shelter;
 
-    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed, String name, Species species, Gender gender, boolean canBeFostered, int adoptionId, int shelterId) {
+    @ManyToMany
+    @JoinTable(name = "pet_belongs_to_category",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_category"))
+    List<Category> categories;
+
+    @ManyToMany
+    @JoinTable(name = "pet_needs_intervention_in_vet_clinic",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_vet_clinic"))
+    List<VetClinic> vetClinicsTreatedIn;
+
+    @ManyToMany
+    @JoinTable(name = "pet_needs_therapy",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_therapy"))
+    List<Therapy> therapies;
+
+    @ManyToMany
+    @JoinTable(name = "pet_preferably_eats_food",
+            joinColumns = @JoinColumn(name = "id_pet"),
+            inverseJoinColumns = @JoinColumn(name = "id_food"))
+    List<Food> preferredFoods;
+
+    public Pet(String imageUrl, AgeGroup ageGroup, Size size, String breed,
+               String name, Species species, Gender gender, Boolean canBeFostered,
+               Adoption adoption, Shelter shelter) {
         this.imageUrl = imageUrl;
         this.ageGroup = ageGroup;
         this.size = size;
@@ -56,10 +92,7 @@ public class Pet {
         this.species = species;
         this.gender = gender;
         this.canBeFostered = canBeFostered;
-        this.adoptionId = adoptionId;
-        this.shelterId = shelterId;
-    }
-
-    public Pet() {
+        this.adoption = adoption;
+        this.shelter = shelter;
     }
 }

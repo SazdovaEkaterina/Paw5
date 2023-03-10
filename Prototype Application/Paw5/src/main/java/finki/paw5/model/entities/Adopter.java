@@ -6,12 +6,14 @@ import finki.paw5.model.enumerations.Housing;
 import finki.paw5.model.enumerations.PhysicalActivity;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "adopter")
+@RequiredArgsConstructor
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Adopter extends User {
 
@@ -39,8 +41,9 @@ public class Adopter extends User {
     @Column(name = "is_verified", nullable = false)
     private Boolean verified;
 
-    @Column(name = "verified_by_employee")
-    private Integer verifiedByEmployeeId;
+    @ManyToOne
+    @JoinColumn(name = "verified_by_employee")
+    Employee employeeVerificator;
 
     public Adopter(LocalDate dateCreated, String name, String email, String password, String telephone,
                    FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
@@ -56,19 +59,4 @@ public class Adopter extends User {
         this.verified = verified;
     }
 
-    public Adopter(FreeTime freeTime, Funds funds, boolean hasOtherPets, boolean hasKids, Housing housing,
-                   PhysicalActivity physicalActivity, boolean willFoster, boolean verified, int verifiedByEmployeeId) {
-        this.freeTime = freeTime;
-        this.funds = funds;
-        this.hasOtherPets = hasOtherPets;
-        this.hasKids = hasKids;
-        this.housing = housing;
-        this.physicalActivity = physicalActivity;
-        this.willFoster = willFoster;
-        this.verified = verified;
-        this.verifiedByEmployeeId = verifiedByEmployeeId;
-    }
-
-    public Adopter() {
-    }
 }
