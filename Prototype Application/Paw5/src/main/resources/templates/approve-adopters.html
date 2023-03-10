@@ -49,13 +49,27 @@
 </header>
 <div>
   <h2>Adopters who are waiting for your approval</h2>
-    <ul>
-      <li
-          th:each="adopter : ${needApproval}"
-          th:text="${adopter.getName()}">
-          <!--napravi tabela-->
-      </li>
-    </ul>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Email Address</td>
+            <td>Telephone Number</td>
+            <td></td>
+        </tr>
+        <tr th:each="adopter : ${needApproval}">
+            <td th:text="${adopter.getName()}"></td>
+            <td th:text="${adopter.getEmail()}"></td>
+            <td th:text="${adopter.getTelephone()}"></td>
+            <td>
+                <form method="POST"
+                      th:action="@{'/submit-approval-{id}' (id=${adopter.getId()})}">
+                    <button id="submit"
+                            type="submit"
+                            class="btn">Approve</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

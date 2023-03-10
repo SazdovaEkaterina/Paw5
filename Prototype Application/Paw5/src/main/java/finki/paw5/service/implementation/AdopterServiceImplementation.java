@@ -23,4 +23,14 @@ public class AdopterServiceImplementation implements AdopterService {
                 .filter(a -> !a.getVerified() && a.getEmployeeVerificator() == null)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Adopter findById(Integer id) {
+        return this.adopterRepository.findById(id).get();
+    }
+
+    @Override
+    public void save(Adopter adopter) {
+        this.adopterRepository.save(adopter);
+    }
 }
