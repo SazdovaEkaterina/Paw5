@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Unapproved adopters</title>
@@ -51,8 +51,8 @@
   <h2>Adopters who are waiting for your approval</h2>
     <ul>
       <li
-          th:each="na : ${needApproval}"
-          th:text="${na.getName()}">
+          th:each="adopter : ${needApproval}"
+          th:text="${adopter.getName()}">
           <!--napravi tabela-->
       </li>
     </ul>
