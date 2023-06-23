@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "food")
+@Table(name = "food", schema = "project")
 public class Food {
 
     @Id

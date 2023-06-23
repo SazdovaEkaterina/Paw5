@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "pet")
+@Table(name = "pet", schema = "project")
 public class Pet {
 
     @Id

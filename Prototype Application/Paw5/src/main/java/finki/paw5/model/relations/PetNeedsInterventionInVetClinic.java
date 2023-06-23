@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "pet_needs_intervention_in_vet_clinic")
+@Table(name = "pet_needs_intervention_in_vet_clinic", schema = "project")
 @IdClass(PetNeedsInterventionInVetClinicId.class)
 public class PetNeedsInterventionInVetClinic {
 

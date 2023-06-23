@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "donor")
+@Table(name = "donor", schema = "project")
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Donor extends User {
 

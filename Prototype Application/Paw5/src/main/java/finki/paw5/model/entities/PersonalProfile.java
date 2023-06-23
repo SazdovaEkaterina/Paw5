@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "personal_profile")
+@Table(name = "personal_profile", schema = "project")
 public class PersonalProfile {
 
     @Id

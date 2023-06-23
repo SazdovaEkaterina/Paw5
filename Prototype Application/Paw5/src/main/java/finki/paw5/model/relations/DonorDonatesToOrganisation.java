@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "donor_donates_to_organisation")
+@Table(name = "donor_donates_to_organisation", schema = "project")
 @IdClass(DonorDonatesToOrganisationId.class)
 public class DonorDonatesToOrganisation {
 

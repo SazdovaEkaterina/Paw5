@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "post")
+@Table(name = "post", schema = "project")
 public class Post {
 
     @Id

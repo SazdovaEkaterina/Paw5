@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "user_table")
+@Table(name = "user_table", schema = "project")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 

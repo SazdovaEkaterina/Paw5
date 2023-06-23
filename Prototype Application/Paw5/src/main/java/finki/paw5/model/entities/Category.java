@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "category")
+@Table(name = "category", schema = "project")
 public class Category {
 
     @Id
