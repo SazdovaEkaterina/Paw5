@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "pet_preferably_eats_food")
+@Table(name = "pet_preferably_eats_food", schema = "project")
 @IdClass(PetPreferablyEatsFoodId.class)
 public class PetPreferablyEatsFood {
 

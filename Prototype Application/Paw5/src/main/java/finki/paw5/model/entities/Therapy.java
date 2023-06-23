@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "therapy")
+@Table(name = "therapy", schema = "project")
 public class Therapy {
 
     @Id

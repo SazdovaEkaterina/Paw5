@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "adopter")
+@Table(name = "adopter", schema = "project")
 @RequiredArgsConstructor
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Adopter extends User {

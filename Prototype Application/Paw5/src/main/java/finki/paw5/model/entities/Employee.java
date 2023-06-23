@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name = "employee")
+@Table(name = "employee", schema = "project")
 @PrimaryKeyJoinColumn(name = "id_user")
 public class Employee extends User {
 
