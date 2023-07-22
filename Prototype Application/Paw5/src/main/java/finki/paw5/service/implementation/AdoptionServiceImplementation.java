@@ -1,11 +1,11 @@
 package finki.paw5.service.implementation;
 
 import finki.paw5.model.entities.Adoption;
+import finki.paw5.model.entities.Pet;
 import finki.paw5.repository.AdoptionRepository;
 import finki.paw5.service.AdoptionService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
